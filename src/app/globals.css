@@ -1,0 +1,740 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* ── Process engineering palette (spec §7) ─────────────────────── */
+  --color-process: var(--process);
+  --color-process-foreground: var(--process-foreground);
+  --color-process-soft: var(--process-soft);
+  --color-analysis: var(--analysis);
+  --color-analysis-soft: var(--analysis-soft);
+  --color-safety: var(--safety);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--elevated);
+  --color-line: var(--line);
+  --color-grid: var(--grid-line);
+}
+
+/* ── Light theme ──────────────────────────────────────────────────── */
+:root {
+  --radius: 0.625rem;
+  --background: #f7f8f7;
+  --foreground: #14201b;
+  --card: #ffffff;
+  --card-foreground: #14201b;
+  --popover: #ffffff;
+  --popover-foreground: #14201b;
+  --primary: #1f8f5f;
+  --primary-foreground: #f7fdfa;
+  --secondary: #e9efeae2;
+  --secondary-foreground: #14201b;
+  --muted: #eef1ef;
+  --muted-foreground: #57625c;
+  --accent: #e4f0e9;
+  --accent-foreground: #14532d;
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
+  --border: #dce3de;
+  --input: #dce3de;
+  --ring: #1f8f5f;
+  --chart-1: #1f8f5f;
+  --chart-2: #2e6fd8;
+  --chart-3: #e3a12b;
+  --chart-4: #4a5568;
+  --chart-5: #9aa8a0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #14201b;
+  --sidebar-primary: #1f8f5f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4f0e9;
+  --sidebar-accent-foreground: #14532d;
+  --sidebar-border: #dce3de;
+  --sidebar-ring: #1f8f5f;
+
+  --process: #1f8f5f;
+  --process-foreground: #f7fdfa;
+  --process-soft: #1f8f5f14;
+  --analysis: #2e6fd8;
+  --analysis-soft: #2e6fd814;
+  --safety: #b07f16;
+  --surface: #ffffff;
+  --elevated: #f2f5f2;
+  --line: #dce3de;
+  --grid-line: #14201b0d;
+}
+
+/* ── Dark theme (default) ─────────────────────────────────────────── */
+.dark {
+  --background: #0d1310;
+  --foreground: #f3f6f4;
+  --card: #151c18;
+  --card-foreground: #f3f6f4;
+  --popover: #151c18;
+  --popover-foreground: #f3f6f4;
+  --primary: #45c68a;
+  --primary-foreground: #07130c;
+  --secondary: #1c2520;
+  --secondary-foreground: #f3f6f4;
+  --muted: #1c2520;
+  --muted-foreground: #a2aea6;
+  --accent: #1a2b21;
+  --accent-foreground: #a9ecc9;
+  --destructive: #e05d4b;
+  --destructive-foreground: #ffffff;
+  --border: #29342e;
+  --input: #29342e;
+  --ring: #45c68a;
+  --chart-1: #45c68a;
+  --chart-2: #6ca8ff;
+  --chart-3: #e3a12b;
+  --chart-4: #a2aea6;
+  --chart-5: #6f7d74;
+  --sidebar: #151c18;
+  --sidebar-foreground: #f3f6f4;
+  --sidebar-primary: #45c68a;
+  --sidebar-primary-foreground: #07130c;
+  --sidebar-accent: #1a2b21;
+  --sidebar-accent-foreground: #a9ecc9;
+  --sidebar-border: #29342e;
+  --sidebar-ring: #45c68a;
+
+  --process: #45c68a;
+  --process-foreground: #07130c;
+  --process-soft: #45c68a1a;
+  --analysis: #6ca8ff;
+  --analysis-soft: #6ca8ff1a;
+  --safety: #e3a12b;
+  --surface: #151c18;
+  --elevated: #1c2520;
+  --line: #29342e;
+  --grid-line: #f3f6f40a;
+}
+
+/* ── Lenis smooth-scroll recommended styles ─────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv05", "cv08";
+    text-rendering: optimizeLegibility;
+  }
+  /* Cinematic film grain across the whole experience */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--process) 32%, transparent);
+    color: var(--foreground);
+  }
+  :focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--process) 70%, transparent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--muted-foreground) 30%, transparent);
+    border-radius: 8px;
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--process) 55%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Monospace technical label — stream IDs, tags, units (spec §8) */
+  .tech-label {
+    font-family: var(--font-geist-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Blueprint grid backdrop */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .bg-blueprint-fine {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+
+  /* Dotted grid */
+  .bg-dots {
+    background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Animated flowing dashes for process lines */
+  .flow-line {
+    stroke-dasharray: 6 8;
+    animation: flow-dash 1.4s linear infinite;
+  }
+  @keyframes flow-dash {
+    to {
+      stroke-dashoffset: -14;
+    }
+  }
+
+  /* Vertical / horizontal CSS pipes with marching mass flow */
+  .pipe,
+  .pipe-h {
+    --pipe-color: color-mix(in srgb, var(--process) 85%, transparent);
+    background-image: repeating-linear-gradient(
+      var(--pipe-dir, 180deg),
+      var(--pipe-color) 0 5px,
+      transparent 5px 12px
+    );
+    background-size: 100% 12px;
+    animation: pipe-march 0.9s linear infinite;
+    border-radius: 2px;
+  }
+  .pipe-h {
+    --pipe-dir: 90deg;
+    background-size: 12px 100%;
+  }
+  @keyframes pipe-march {
+    to {
+      background-position: 0 12px;
+    }
+  }
+
+  /* Soft green glow */
+  .glow-process {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--process) 28%, transparent);
+  }
+  .text-glow-process {
+    text-shadow: 0 0 28px color-mix(in srgb, var(--process) 45%, transparent);
+  }
+
+  /* Blueprint frame corners — engineering drawing aesthetic */
+  .corner-frame {
+    --c: color-mix(in srgb, var(--process) 60%, transparent);
+    background:
+      linear-gradient(var(--c), var(--c)) top left / 14px 1.5px,
+      linear-gradient(var(--c), var(--c)) top left / 1.5px 14px,
+      linear-gradient(var(--c), var(--c)) top right / 14px 1.5px,
+      linear-gradient(var(--c), var(--c)) top right / 1.5px 14px,
+      linear-gradient(var(--c), var(--c)) bottom left / 14px 1.5px,
+      linear-gradient(var(--c), var(--c)) bottom left / 1.5px 14px,
+      linear-gradient(var(--c), var(--c)) bottom right / 14px 1.5px,
+      linear-gradient(var(--c), var(--c)) bottom right / 1.5px 14px;
+    background-repeat: no-repeat;
+  }
+
+  /* Halo of background color for text sitting on imagery */
+  .scrim-text {
+    text-shadow: 0 1px 14px color-mix(in srgb, var(--background) 92%, transparent),
+      0 0 4px color-mix(in srgb, var(--background) 75%, transparent);
+  }
+
+  /* Image treatment — keeps photos cohesive with the palette */
+  .img-industrial {
+    filter: saturate(0.86) contrast(1.05) brightness(0.92);
+  }
+  .dark .img-industrial {
+    filter: saturate(0.8) contrast(1.06) brightness(0.82);
+  }
+
+  /* Underline sweep for links */
+  .link-sweep {
+    position: relative;
+  }
+  .link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1.5px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: right;
+    background: var(--process);
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .link-sweep:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Shimmer sweep for featured elements */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      color-mix(in srgb, var(--foreground) 7%, transparent) 50%,
+      transparent 70%
+    );
+    animation: shimmer-sweep 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes shimmer-sweep {
+    60%,
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Card hover elevation with green edge */
+  .card-lift {
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--process) 45%, var(--border));
+    box-shadow: 0 16px 40px -18px color-mix(in srgb, var(--process) 35%, transparent);
+  }
+
+  /* Noise overlay texture */
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  /* ── ELITE LAYER ────────────────────────────────────────────────── */
+
+  /* Animated aurora — soft drifting light fields (GPU transforms only) */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    will-change: transform;
+    pointer-events: none;
+  }
+  .aurora-a {
+    animation: aurora-drift-a 26s ease-in-out infinite alternate;
+  }
+  .aurora-b {
+    animation: aurora-drift-b 32s ease-in-out infinite alternate;
+  }
+  @keyframes aurora-drift-a {
+    0% {
+      transform: translate3d(-8%, -4%, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(10%, 8%, 0) scale(1.18);
+    }
+  }
+  @keyframes aurora-drift-b {
+    0% {
+      transform: translate3d(6%, 10%, 0) scale(1.1);
+    }
+    100% {
+      transform: translate3d(-10%, -8%, 0) scale(0.94);
+    }
+  }
+
+  /* Ken Burns — slow cinematic zoom for hero imagery */
+  .ken-burns {
+    animation: ken-burns 26s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.02) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.12) translate3d(-1.5%, -1.5%, 0);
+    }
+  }
+
+  /* Animated gradient text — the signature accent treatment */
+  .text-flow {
+    background-image: linear-gradient(
+      100deg,
+      var(--process) 0%,
+      color-mix(in srgb, var(--process) 55%, var(--analysis)) 38%,
+      var(--analysis) 55%,
+      color-mix(in srgb, var(--analysis) 45%, var(--process)) 72%,
+      var(--process) 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: text-flow-pan 7s ease-in-out infinite alternate;
+  }
+  @keyframes text-flow-pan {
+    from {
+      background-position: 0% 50%;
+    }
+    to {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Serif display accent — editorial contrast word */
+  .display-accent {
+    font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Glass panel — frosted, luminous edge */
+  .glass {
+    background: color-mix(in srgb, var(--surface) 62%, transparent);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--foreground) 10%, transparent),
+      0 24px 60px -32px rgb(0 0 0 / 0.5);
+  }
+
+  /* Rotating beam border — conic light travelling the card edge */
+  .beam-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .beam-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--beam-angle),
+      transparent 0%,
+      transparent 76%,
+      color-mix(in srgb, var(--process) 85%, transparent) 88%,
+      color-mix(in srgb, var(--analysis) 75%, transparent) 94%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    animation: beam-spin 3.2s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .beam-border:hover::before,
+  .beam-border:focus-visible::before {
+    opacity: 1;
+  }
+  @keyframes beam-spin {
+    to {
+      --beam-angle: 360deg;
+    }
+  }
+
+  /* Cursor spotlight — set --mx / --my from JS for the glow position */
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--process) 13%, transparent),
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+
+  /* Outlined ghost display text */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--foreground) 13%, transparent);
+  }
+
+  /* ── Light-mode contrast tuning ─────────────────────────────── */
+  :root:not(.dark) .text-flow {
+    filter: brightness(0.74) saturate(1.18);
+  }
+  :root:not(.dark) .glass {
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+  }
+  :root:not(.dark) .text-outline {
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--foreground) 22%, transparent);
+  }
+
+  /* Glare sheet used by TiltCard */
+  .tilt-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      520px circle at var(--gx, 50%) var(--gy, 50%),
+      rgb(255 255 255 / 0.16),
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .group:hover .tilt-glare {
+    opacity: 1;
+  }
+
+  /* Print styles — recruiter mode must print cleanly (spec §53) */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    body {
+      background: #ffffff !important;
+      color: #14201b !important;
+    }
+  }
+}
+
+/* Pulsing status dot */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--process) 55%, transparent);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+/* Marquee */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 36s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion — accessibility (spec §62) */
+@media (prefers-reduced-motion: reduce) {
+  .flow-line,
+  .marquee-track,
+  .shimmer::before,
+  .pulse-dot,
+  .aurora,
+  .ken-burns,
+  .text-flow,
+  .beam-border::before {
+    animation: none !important;
+  }
+  .text-flow {
+    background-position: 0% 50%;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   V3 ELITE LAYER — preloader, cursor, split text, rows, finale
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Hide the native cursor while the custom one is active (fine pointers) */
+@media (pointer: fine) {
+  body.elite-cursor,
+  body.elite-cursor a,
+  body.elite-cursor button,
+  body.elite-cursor [role="button"],
+  body.elite-cursor input,
+  body.elite-cursor textarea,
+  body.elite-cursor select,
+  body.elite-cursor label,
+  body.elite-cursor summary {
+    cursor: none;
+  }
+}
+
+/* Character masks for split-text reveals */
+.char-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.07em;
+}
+.char-inner {
+  display: inline-block;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Capability row hover sweep — a soft green wash travelling the row */
+.row-sweep {
+  position: relative;
+}
+.row-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--process) 7%, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.row-sweep:hover::before,
+.row-sweep:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* ── The finale — scoped theme inversion ──────────────────────────
+   The last section flips the entire design system to warm cream with
+   deep green, regardless of light/dark mode. Because every utility
+   reads the CSS variables, the whole system inverts for free. */
+.finale {
+  --background: #f2efe6;
+  --foreground: #131a15;
+  --card: #faf8f1;
+  --card-foreground: #131a15;
+  --muted: #e9e5d7;
+  --muted-foreground: #57615a;
+  --accent: #e3ecdf;
+  --accent-foreground: #14532d;
+  --border: #d9d3c1;
+  --line: #d9d3c1;
+  --surface: #faf8f1;
+  --elevated: #f6f3e9;
+  --grid-line: #131a150c;
+  --process: #177a4d;
+  --process-foreground: #f5fbf7;
+  --process-soft: #177a4d16;
+  --analysis: #9a6a1f;
+  --analysis-soft: #9a6a1f14;
+  --safety: #9a6a1f;
+}
+.finale .glass {
+  background: color-mix(in srgb, #ffffff 72%, transparent);
+  box-shadow:
+    inset 0 1px 0 0 rgb(19 26 21 / 0.06),
+    0 24px 60px -36px rgb(19 26 21 / 0.35);
+}
+.finale .text-outline {
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--foreground) 26%, transparent);
+}
+.finale ::selection {
+  background: color-mix(in srgb, var(--process) 26%, transparent);
+}
+
+/* cache-bust v3 */
